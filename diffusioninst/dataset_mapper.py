@@ -18,7 +18,7 @@ import copy
 import logging
 import numpy as np
 import torch
-
+import scipy.io as sio
 from detectron2.data import detection_utils as utils
 from detectron2.data import transforms as T
 
@@ -93,8 +93,16 @@ class DiffusionInstDatasetMapper:
         Returns:
             dict: a format that builtin models in detectron2 accept
         """
-        dataset_dict = copy.deepcopy(dataset_dict)  # it will be modified by code below
-        image = utils.read_image(dataset_dict["file_name"], format=self.img_format)
+        dataset_dict = copy.deepcopy(dataset_dict)  # it will be modified by code below, matloader
+        d_name = dataset_dict["file_name"]
+        new_dir = d_name[:-3] + 'mat'
+        print(f"what is pwd {new_dir}")
+        img_mat = sio.loadmat(new_dir)
+        img_x = img_mat["vxSample"]
+        img_y = img_mat["vySample"]
+        image = np.stack((img_x, img_y, np.zeros(img_x.shape)), -1)
+        print(f"i am in mat loader")
+        # image = utils.read_image(dataset_dict["file_name"], format=self.img_format)
         utils.check_image_size(dataset_dict, image)
 
         if self.crop_gen is None:

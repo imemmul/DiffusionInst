@@ -264,6 +264,7 @@ def main(args):
 
     if args.eval_only:
         model = Trainer.build_model(cfg)
+        print(model)
         kwargs = may_get_ema_checkpointer(cfg, model)
         if cfg.MODEL_EMA.ENABLED:
             EMADetectionCheckpointer(model, save_dir=cfg.OUTPUT_DIR, **kwargs).resume_or_load(cfg.MODEL.WEIGHTS,
@@ -283,7 +284,11 @@ def main(args):
     return trainer.train()
 
 
+from detectron2.data.datasets import register_coco_instances
 if __name__ == "__main__":
+    register_coco_instances("eddy_train", {},"/cta/users/emir/dev/datasets/eddy_dataset/annotations/train.json", "/cta/users/emir/dev/datasets/eddy_dataset/train/images/")
+    register_coco_instances("eddy_val", {}, "/cta/users/emir/dev/datasets/eddy_dataset/annotations/val.json", "/cta/users/emir/dev/datasets/eddy_dataset/val/images/")
+
     args = default_argument_parser().parse_args()
     print("Command Line Args:", args)
     launch(
