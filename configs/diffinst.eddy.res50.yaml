@@ -1,6 +1,6 @@
 _BASE_: "Base-DiffusionInst.yaml"
 MODEL:
-  WEIGHTS: #"/models/R-50.pkl"
+  WEIGHTS: #"./output/model_0004999.pth"
   RESNETS:
     DEPTH: 50
     STRIDE_IN_1X1: False

@@ -96,12 +96,11 @@ class DiffusionInstDatasetMapper:
         dataset_dict = copy.deepcopy(dataset_dict)  # it will be modified by code below, matloader
         d_name = dataset_dict["file_name"]
         new_dir = d_name[:-3] + 'mat'
-        print(f"what is pwd {new_dir}")
+        # print(f"what is pwd {new_dir}")
         img_mat = sio.loadmat(new_dir)
         img_x = img_mat["vxSample"]
         img_y = img_mat["vySample"]
         image = np.stack((img_x, img_y, np.zeros(img_x.shape)), -1)
-        print(f"i am in mat loader")
         # image = utils.read_image(dataset_dict["file_name"], format=self.img_format)
         utils.check_image_size(dataset_dict, image)
 
@@ -120,7 +119,7 @@ class DiffusionInstDatasetMapper:
         # Pytorch's dataloader is efficient on torch.Tensor due to shared-memory,
         # but not efficient on large generic data structures due to the use of pickle & mp.Queue.
         # Therefore it's important to use torch.Tensor.
-        dataset_dict["image"] = torch.as_tensor(np.ascontiguousarray(image.transpose(2, 0, 1)))
+        dataset_dict["image"] = torch.as_tensor(np.ascontiguousarray(image.transpose(2, 0, 1)), dtype=torch.float)
 
         if not self.is_train:
             # USER: Modify this if you want to keep them for some reason.

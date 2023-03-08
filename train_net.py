@@ -278,7 +278,7 @@ def main(args):
         if comm.is_main_process():
             verify_results(cfg, res)
         return res
-
+    # TODO should change the num_classes
     trainer = Trainer(cfg)
     trainer.resume_or_load(resume=args.resume)
     return trainer.train()
@@ -288,8 +288,8 @@ from detectron2.data.datasets import register_coco_instances
 if __name__ == "__main__":
     register_coco_instances("eddy_train", {},"/cta/users/emir/dev/datasets/eddy_dataset/annotations/train.json", "/cta/users/emir/dev/datasets/eddy_dataset/train/images/")
     register_coco_instances("eddy_val", {}, "/cta/users/emir/dev/datasets/eddy_dataset/annotations/val.json", "/cta/users/emir/dev/datasets/eddy_dataset/val/images/")
-
     args = default_argument_parser().parse_args()
+    
     print("Command Line Args:", args)
     launch(
         main,

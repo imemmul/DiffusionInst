@@ -1,4 +1,4 @@
-Wed Mar  8 02:20:45 2023       
+Thu Mar  9 02:08:55 2023       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 525.85.12    Driver Version: 525.85.12    CUDA Version: 12.0     |
 |-------------------------------+----------------------+----------------------+
@@ -7,7 +7,7 @@ Wed Mar  8 02:20:45 2023
 |                               |                      |               MIG M. |
 |===============================+======================+======================|
 |   0  NVIDIA RTX A6000    On   | 00000000:65:00.0 Off |                  Off |
-| 30%   40C    P8    27W / 300W |     83MiB / 49140MiB |      0%      Default |
+| 30%   43C    P8    28W / 300W |     83MiB / 49140MiB |      1%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
                                                                                
@@ -26,7 +26,7 @@ SHELL=/bin/bash
 SLURM_JOB_USER=emir
 SLURM_TASKS_PER_NODE=4
 SLURM_JOB_UID=1001007
-SLURM_TASK_PID=1583351
+SLURM_TASK_PID=1721678
 CONDA_EXE=/cta/users/emir/anaconda3/bin/conda
 _CE_M=
 LMOD_arch=x86_64
@@ -52,7 +52,7 @@ MANPATH=/usr/share/lmod/lmod/share/man::
 ROCR_VISIBLE_DEVICES=0
 LMOD_PREPEND_BLOCK=normal
 SLURM_JOB_NUM_NODES=1
-SLURM_JOBID=390
+SLURM_JOBID=423
 SLURM_JOB_QOS=normal
 MOTD_SHOWN=pam
 HOME=/cta/users/emir
@@ -64,7 +64,7 @@ TMPDIR=/tmp
 SLURM_NTASKS=4
 SLURM_TOPOLOGY_ADDR=nova82
 LMOD_VERSION=6.6
-SSH_CONNECTION=172.31.0.5 61510 10.100.13.10 22
+SSH_CONNECTION=172.31.0.4 56338 10.100.13.10 22
 MODULEPATH_ROOT=/usr/modulefiles
 SLURM_TOPOLOGY_ADDR_PATTERN=node
 CUDA_VISIBLE_DEVICES=0
@@ -90,15 +90,15 @@ SLURM_NNODES=1
 BASH_ENV=/usr/share/lmod/lmod/init/bash
 LMOD_FULL_SETTARG_SUPPORT=no
 LMOD_sys=Linux
-XDG_SESSION_ID=7983
+XDG_SESSION_ID=8340
 SLURM_SUBMIT_HOST=login
 CONDA_PYTHON_EXE=/cta/users/emir/anaconda3/bin/python
 LC_CTYPE=C.UTF-8
 XDG_RUNTIME_DIR=/run/user/1001007
 LMOD_COLORIZE=yes
-SLURM_JOB_ID=390
+SLURM_JOB_ID=423
 SLURM_NODEID=0
-SSH_CLIENT=172.31.0.5 61510 22
+SSH_CLIENT=172.31.0.4 56338 22
 CONDA_DEFAULT_ENV=emirdlp
 XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
 SLURM_CONF=/etc/slurm/slurm.conf
@@ -107,7 +107,7 @@ SLURM_JOB_NAME=DiffusionInst
 MODULEPATH=/cta/etc/mod
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1001007/bus
 LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod
-SSH_TTY=/dev/pts/36
+SSH_TTY=/dev/pts/41
 SLURM_JOB_GID=1001000
 OLDPWD=/cta/users/emir/dev
 SLURM_JOB_NODELIST=nova82
@@ -141,9 +141,9 @@ file locks                          (-x) unlimited
 Running Example Job...!
 ===============================================================================
 Running Python script...
-Command Line Args: Namespace(config_file='configs/diffinst.eddy.res50.inst.yaml', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:50735', opts=[])
-[03/08 02:20:49 detectron2]: Rank of current process: 0. World size: 1
-[03/08 02:20:49 detectron2]: Environment info:
+Command Line Args: Namespace(config_file='configs/diffinst.eddy.res50.inst.yaml', resume=True, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:50735', opts=[])
+[03/09 02:08:58 detectron2]: Rank of current process: 0. World size: 1
+[03/09 02:08:59 detectron2]: Environment info:
 ----------------------  ---------------------------------------------------------------------------------------
 sys.platform            linux
 Python                  3.10.6 (main, Oct 24 2022, 16:07:47) [GCC 11.2.0]
@@ -180,8 +180,8 @@ PyTorch built with:
   - Magma 2.6.1
   - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
 
-[03/08 02:20:49 detectron2]: Command line arguments: Namespace(config_file='configs/diffinst.eddy.res50.inst.yaml', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:50735', opts=[])
-[03/08 02:20:49 detectron2]: Contents of args.config_file=configs/diffinst.eddy.res50.inst.yaml:
+[03/09 02:08:59 detectron2]: Command line arguments: Namespace(config_file='configs/diffinst.eddy.res50.inst.yaml', resume=True, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:50735', opts=[])
+[03/09 02:08:59 detectron2]: Contents of args.config_file=configs/diffinst.eddy.res50.inst.yaml:
 [38;5;197m_BASE_[39m[38;5;15m:[39m[38;5;15m [39m[38;5;186m"[39m[38;5;186mdiffinst.eddy.res50.yaml[39m[38;5;186m"[39m
 [38;5;197mMODEL[39m[38;5;15m:[39m
 [38;5;15m  [39m[38;5;197mMASK_ON[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mTrue[39m
@@ -191,7 +191,7 @@ PyTorch built with:
 [38;5;15m  [39m[38;5;197mSTEPS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m(60000,80000)[39m[38;5;15m [39m[38;5;242m#(175000, 210000) #(350000, 420000)[39m
 [38;5;15m  [39m[38;5;197mMAX_ITER[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m90000[39m[38;5;15m [39m[38;5;242m#225000 #450000[39m
 
-[03/08 02:20:49 detectron2]: Running with full config:
+[03/09 02:08:59 detectron2]: Running with full config:
 [38;5;197mCUDNN_BENCHMARK[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
 [38;5;197mDATALOADER[39m[38;5;15m:[39m
 [38;5;15m  [39m[38;5;197mASPECT_RATIO_GROUPING[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mtrue[39m
@@ -597,124 +597,52 @@ PyTorch built with:
 [38;5;197mVERSION[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m2[39m
 [38;5;197mVIS_PERIOD[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0[39m
 
-[03/08 02:20:49 detectron2]: Full config saved to ./output/config.yaml
-[03/08 02:20:52 d2.data.datasets.coco]: Loaded 9180 images in COCO format from /cta/users/emir/dev/datasets/eddy_dataset/annotations/train.json
-[03/08 02:20:52 d2.data.build]: Distribution of instances among all 1 categories:
+[03/09 02:08:59 detectron2]: Full config saved to ./output/config.yaml
+[03/09 02:09:02 d2.data.datasets.coco]: Loaded 9180 images in COCO format from /cta/users/emir/dev/datasets/eddy_dataset/annotations/train.json
+[03/09 02:09:03 d2.data.build]: Distribution of instances among all 1 categories:
 |  category  | #instances   |
 |:----------:|:-------------|
 |    eddy    | 55518        |
 |            |              |
-[03/08 02:20:52 d2.data.build]: Using training sampler TrainingSampler
-[03/08 02:20:52 d2.data.common]: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
-[03/08 02:20:52 d2.data.common]: Serializing 9180 elements to byte tensors and concatenating them all ...
-[03/08 02:20:53 d2.data.common]: Serialized dataset takes 8.64 MiB
-[03/08 02:20:53 d2.checkpoint.detection_checkpoint]: [DetectionCheckpointer] Loading from None ...
-[03/08 02:20:53 fvcore.common.checkpoint]: No checkpoint found. Initializing model from scratch
-[03/08 02:20:53 d2.engine.train_loop]: Starting training from iteration 0
-ERROR [03/08 02:20:53 d2.engine.train_loop]: Exception during training:
-Traceback (most recent call last):
-  File "/cta/users/emir/dev/detectron2/detectron2/engine/train_loop.py", line 149, in train
-    self.run_step()
-  File "/cta/users/emir/dev/detectron2/detectron2/engine/defaults.py", line 494, in run_step
-    self._trainer.run_step()
-  File "/cta/users/emir/dev/detectron2/detectron2/engine/train_loop.py", line 271, in run_step
-    data = next(self._data_loader_iter)
-  File "/cta/users/emir/dev/detectron2/detectron2/data/common.py", line 291, in __iter__
-    for d in self.dataset:
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 628, in __next__
-    data = self._next_data()
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1333, in _next_data
-    return self._process_data(data)
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1359, in _process_data
-    data.reraise()
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/_utils.py", line 543, in reraise
-    raise exception
-FileNotFoundError: Caught FileNotFoundError in DataLoader worker process 0.
-Original Traceback (most recent call last):
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/scipy/io/matlab/_mio.py", line 39, in _open_file
-    return open(file_like, mode), True
-FileNotFoundError: [Errno 2] No such file or directory: 'pngmat'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 302, in _worker_loop
-    data = fetcher.fetch(index)
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 34, in fetch
-    data.append(next(self.dataset_iter))
-  File "/cta/users/emir/dev/detectron2/detectron2/data/common.py", line 258, in __iter__
-    yield self.dataset[idx]
-  File "/cta/users/emir/dev/detectron2/detectron2/data/common.py", line 95, in __getitem__
-    data = self._map_func(self._dataset[cur_idx])
-  File "/cta/users/emir/dev/detectron2/detectron2/utils/serialize.py", line 26, in __call__
-    return self._obj(*args, **kwargs)
-  File "/cta/users/emir/dev/DiffusionInst/diffusioninst/dataset_mapper.py", line 98, in __call__
-    img_mat = sio.loadmat(d_name[-3:]+"mat")
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/scipy/io/matlab/_mio.py", line 225, in loadmat
-    with _open_file_context(file_name, appendmat) as f:
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/contextlib.py", line 135, in __enter__
-    return next(self.gen)
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/scipy/io/matlab/_mio.py", line 17, in _open_file_context
-    f, opened = _open_file(file_like, appendmat, mode)
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/scipy/io/matlab/_mio.py", line 45, in _open_file
-    return open(file_like, mode), True
-FileNotFoundError: [Errno 2] No such file or directory: 'pngmat.mat'
-
-[03/08 02:20:53 d2.engine.hooks]: Total training time: 0:00:00 (0:00:00 on hooks)
-[03/08 02:20:53 d2.utils.events]:  iter: 0     lr: N/A  max_mem: 434M
-Traceback (most recent call last):
-  File "/cta/users/emir/dev/DiffusionInst/train_net.py", line 294, in <module>
-    launch(
-  File "/cta/users/emir/dev/detectron2/detectron2/engine/launch.py", line 84, in launch
-    main_func(*args)
-  File "/cta/users/emir/dev/DiffusionInst/train_net.py", line 284, in main
-    return trainer.train()
-  File "/cta/users/emir/dev/detectron2/detectron2/engine/defaults.py", line 484, in train
-    super().train(self.start_iter, self.max_iter)
-  File "/cta/users/emir/dev/detectron2/detectron2/engine/train_loop.py", line 149, in train
-    self.run_step()
-  File "/cta/users/emir/dev/detectron2/detectron2/engine/defaults.py", line 494, in run_step
-    self._trainer.run_step()
-  File "/cta/users/emir/dev/detectron2/detectron2/engine/train_loop.py", line 271, in run_step
-    data = next(self._data_loader_iter)
-  File "/cta/users/emir/dev/detectron2/detectron2/data/common.py", line 291, in __iter__
-    for d in self.dataset:
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 628, in __next__
-    data = self._next_data()
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1333, in _next_data
-    return self._process_data(data)
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1359, in _process_data
-    data.reraise()
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/_utils.py", line 543, in reraise
-    raise exception
-FileNotFoundError: Caught FileNotFoundError in DataLoader worker process 0.
-Original Traceback (most recent call last):
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/scipy/io/matlab/_mio.py", line 39, in _open_file
-    return open(file_like, mode), True
-FileNotFoundError: [Errno 2] No such file or directory: 'pngmat'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 302, in _worker_loop
-    data = fetcher.fetch(index)
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 34, in fetch
-    data.append(next(self.dataset_iter))
-  File "/cta/users/emir/dev/detectron2/detectron2/data/common.py", line 258, in __iter__
-    yield self.dataset[idx]
-  File "/cta/users/emir/dev/detectron2/detectron2/data/common.py", line 95, in __getitem__
-    data = self._map_func(self._dataset[cur_idx])
-  File "/cta/users/emir/dev/detectron2/detectron2/utils/serialize.py", line 26, in __call__
-    return self._obj(*args, **kwargs)
-  File "/cta/users/emir/dev/DiffusionInst/diffusioninst/dataset_mapper.py", line 98, in __call__
-    img_mat = sio.loadmat(d_name[-3:]+"mat")
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/scipy/io/matlab/_mio.py", line 225, in loadmat
-    with _open_file_context(file_name, appendmat) as f:
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/contextlib.py", line 135, in __enter__
-    return next(self.gen)
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/scipy/io/matlab/_mio.py", line 17, in _open_file_context
-    f, opened = _open_file(file_like, appendmat, mode)
-  File "/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/scipy/io/matlab/_mio.py", line 45, in _open_file
-    return open(file_like, mode), True
-FileNotFoundError: [Errno 2] No such file or directory: 'pngmat.mat'
-
+[03/09 02:09:03 d2.data.build]: Using training sampler TrainingSampler
+[03/09 02:09:03 d2.data.common]: Serializing the dataset using: <class 'detectron2.data.common._TorchSerializedList'>
+[03/09 02:09:03 d2.data.common]: Serializing 9180 elements to byte tensors and concatenating them all ...
+[03/09 02:09:03 d2.data.common]: Serialized dataset takes 8.64 MiB
+[03/09 02:09:03 d2.checkpoint.detection_checkpoint]: [DetectionCheckpointer] Loading from ./output/model_0004999.pth ...
+[03/09 02:09:03 fvcore.common.checkpoint]: [Checkpointer] Loading from ./output/model_0004999.pth ...
+[03/09 02:09:07 fvcore.common.checkpoint]: Loading trainer from ./output/model_0004999.pth ...
+[03/09 02:09:07 d2.engine.hooks]: Loading scheduler from state_dict ...
+[03/09 02:09:08 d2.engine.train_loop]: Starting training from iteration 5000
+/cta/users/emir/dev/DiffusionInst/diffusioninst/loss.py:230: UserWarning: FALLBACK path has been taken inside: runCudaFusionGroup. This is an indication that codegen Failed for some reason.
+To debug try disable codegen fallback path via setting the env variable `export PYTORCH_NVFUSER_DISABLE=fallback`
+ (Triggered internally at /opt/conda/conda-bld/pytorch_1670525541990/work/torch/csrc/jit/codegen/cuda/manager.cpp:331.)
+  cls_loss = sigmoid_focal_loss_jit(src_logits, target_classes_onehot, alpha=self.focal_loss_alpha, gamma=self.focal_loss_gamma, reduction="none")
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/torch/autograd/__init__.py:197: UserWarning: FALLBACK path has been taken inside: runCudaFusionGroup. This is an indication that codegen Failed for some reason.
+To debug try disable codegen fallback path via setting the env variable `export PYTORCH_NVFUSER_DISABLE=fallback`
+ (Triggered internally at /opt/conda/conda-bld/pytorch_1670525541990/work/torch/csrc/jit/codegen/cuda/manager.cpp:331.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/cta/users/emir/anaconda3/envs/emirdlp/lib/python3.10/site-packages/shapely/set_operations.py:133: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+slurmstepd-nova82: error: *** JOB 423 ON nova82 CANCELLED AT 2023-03-09T02:09:28 ***

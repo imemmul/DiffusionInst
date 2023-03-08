@@ -235,8 +235,8 @@ class DynamicHead(nn.Module):
                 mask_feat = mask_feat + x_p
         mask_feat = self.mask_head(mask_feat)
         ###########################
-        if len(t)!=len(mask_feat):
-            import pdb;pdb.set_trace()
+        # if len(t)!=len(mask_feat): this commented
+        #     import pdb;pdb.set_trace()
         inter_class_logits = []
         inter_pred_bboxes = []
         inter_kernel = []
@@ -354,9 +354,9 @@ class RCNNHead(nn.Module):
         
         if pro_features is None:
             pro_features = roi_features.view(N, nr_boxes, self.d_model, -1).mean(-1)
-        if pro_features.max()>100000:
-            import pdb;pdb.set_trace()
-        roi_features = roi_features.view(N * nr_boxes, self.d_model, -1).permute(2, 0, 1)
+        # if pro_features.max()>100000: # this out-commented
+        #     import pdb;pdb.set_trace()
+        roi_features = roi_features.view(N * nr_boxes, self.d_model, -1).permute(2, 0, 1) # this quitsß
         # torch.Size([49, 1000, 256])
         #kernel_pred = kernel_pred.view(N * nr_boxes, 169, -1).permute(2, 0, 1)
         

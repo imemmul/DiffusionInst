@@ -23,6 +23,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=4
 #SBATCH --partition=main
+##SBATCH --nodelis=nova[32]
 #SBATCH --gres=gpu:1
 #SBATCH --time=7-0
 #SBATCH --output=./output/%j-slurm.out
@@ -67,7 +68,7 @@ echo "==========================================================================
 # Command 1 for matrix
 echo "Running Python script..."
 # Put Python script command below
-python train_net.py --num-gpus 1 --config-file configs/diffinst.eddy.res50.inst.yaml
+python train_net.py --num-gpus 1 --config-file configs/diffinst.eddy.res50.inst.yaml --eval-only
 # Command 2 for matrix
 # echo "Running G++ compiler..."
 # # Put g++ compiler command below
